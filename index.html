@@ -1,0 +1,249 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Твоя игра</title>
+    </head>
+    <body>
+        <dialog id="fs">
+            <div onclick="this.parentElement.close();"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="M19.376 12.416L8.777 19.482A.5.5 0 0 1 8 19.066V4.934a.5.5 0 0 1 .777-.416l10.599 7.066a.5.5 0 0 1 0 .832"/></svg></div>
+        </dialog>
+        <div id="sc">
+            <div id="page_select">
+                <div class="flex">
+                    <div class="table-names">
+                        <div class="name n1">Цветы и растения</div>
+                        <div class="name n2">Женские имена и героини</div>
+                        <div class="name n3">Мода и стиль</div>
+                        <div class="name n4">Праздники и традиции</div>
+                    </div>
+                    <div class="table-grid">
+                        <div class="btn" answer="Весна" did="0" question="Какое время года символически начинается 1 марта, а с 8 марта ассоциируется с пробуждением природы и женской красоты?" onclick="solve(this)">100</div>
+                        <div class="btn" answer="Веточка мимозы" question="Какой традиционный весенний подарок, символизирующий солнце и тепло, чаще всего изображают на открытках к 8 Марта?" onclick="solve(this)">200</div>
+                        <div class="btn" answer="Тюльпаны" question="Какие цветы, завезенные в Европу из Голландии, стали главным символом Международного женского дня в России?" onclick="solve(this)">300</div>
+                        <div class="btn" answer="Подснежник" question="Этот цветок первым появляется из-под снега и является символом надежды и начала весны, воспетый в сказке Маршака." onclick="solve(this)">500</div>
+
+                        <div class="btn" did="1" answer="Клара Цеткин" question="Имя этой известной немецкой социалистки и борца за права женщин неразрывно связано с возникновением праздника 8 Марта." onclick="solve(this)">100</div>
+                        <div class="btn" did="1" answer="Роза Люксембург" question="Назовите фамилию ближайшей соратницы и подруги Клары Цеткин, вместе с которой она боролась за равноправие и чье имя тоже стало символом женского движения." onclick="solve(this)">200</div>
+                        <div class="btn" did="1" answer="Александра Коллонтай" question="Имя этой русской революционерки, которая убедила советское правительство сделать 8 Марта официальным праздником в молодой стране Советов." onclick="solve(this)">300</div>
+                        <div class="btn" did="1" answer="Надежда Крупская" question="Жена и соратница Владимира Ленина, которая активно занималась вопросами образования и воспитания, в том числе поддерживала идеи женского равноправия и нового праздника." onclick="solve(this)">500</div>
+
+                        <div class="btn" did="2" answer="Духи" question="Какой подарок, связанный с приятным ароматом, чаще всего дарят женщинам, чтобы подчеркнуть их индивидуальность?" onclick="solve(this)">100</div>
+                        <div class="btn" did="2" answer="Коробка конфет" question="Самый популярный съедобный подарок, который принято дарить вместе с цветами, чтобы сделать поздравление более сладким?" onclick="solve(this)">200</div>
+                        <div class="btn" did="2" answer="Украшения" question="Что дарят женщинам из драгоценных металлов и камней, чтобы подчеркнуть их статус и красоту?" onclick="solve(this)">300</div>
+                        <div class="btn" did="2" answer="Букет" question="Как называется красиво оформленная композиция из срезанных цветов, которая является главным атрибутом праздника?" onclick="solve(this)">500</div>
+
+                        <div class="btn" did="3" answer="Выходной день" question="Какой официальный статус имеет 8 Марта в России, позволяющий всем гражданам отдыхать?" onclick="solve(this)">100</div>
+                        <div class="btn" did="3" answer="Китай" question="В какой азиатской стране 8 Марта является официальным выходным только для женщин, позволяя им провести этот день в свое удовольствие?" onclick="solve(this)">200</div>
+                        <div class="btn" did="3" answer="1913 год" question="В каком году Международный женский день был впервые официально отмечен в Российской империи (в Санкт-Петербурге)?" onclick="solve(this)">300</div>
+                        <div class="btn" did="3" answer="Мать и дитя" question="В 1965 году в СССР 8 Марта стал не просто праздником, а выходным днем. С каким важным государственным лозунгом это было связано, провозглашавшим заботу о семье?" onclick="solve(this)">500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <dialog id="win">
+            <div id="win_question"></div>
+            <div id="win_answer"></div>
+        </dialog>
+        <div id="fsbtn" onclick="enterFullscreen(document.querySelector('body'))">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z"/></svg>
+        </div>
+    </body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+            --amb: #e8ca91;
+        }
+        body {
+            background-image: radial-gradient(#0007a9, #01024e);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Oswald", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui;
+            margin: 0;
+            color: var(--amb);
+            font-size: 60px;
+            text-shadow: 0px 4px 8px rgb(232, 202, 145, 0.2);
+            font-weight: 600;
+            user-select: none;
+        }
+        #page_select {
+            width: 100vw;
+            height: 100vh;
+        }
+        .flex {
+            display: flex;
+            height: 100vh;
+        }
+        #sc {
+            
+            background-image: radial-gradient(#0007a9, #01024e);
+        }
+        .table-names {
+            grid-template-rows: repeat(4, 1fr);
+            display: grid;
+            border-right: 1px solid white;            
+            width: -webkit-fill-available;
+        }
+        .table-names .name {
+            display: flex;
+            border-bottom: 1px solid white;
+            justify-content: center;
+            align-items: center;
+        }
+        .table-grid {
+            display: grid;
+            
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
+        .table-grid .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid white; 
+            border-right: 1px solid white; 
+        }
+        @keyframes blink {
+            0% { background: var(--amb); color: black; }
+            2% { background: var(--amb); color: black; }
+            3% { background: transparent; color: var(--amb); }
+            5% { background: transparent; color: var(--amb); }
+            6% { background: var(--amb); color: black; }
+            8% { background: var(--amb); color: black; }
+            9% { background: transparent; color: var(--amb); }
+            11% { background: transparent; color: var(--amb); }
+            12% { background: var(--amb); color: black; }
+            14% { background: var(--amb); color: black; }
+            15% { background: transparent; color: var(--amb); }
+            17% { background: transparent; color: var(--amb); }
+            18% { background: var(--amb); color: black; }
+            100% { background: var(--amb); color: black; }
+        }
+        #win, #fs {
+            background: transparent;
+            overflow: hidden;
+            height: 100vh;
+            background: radial-gradient(#0007a9, #01024e);
+            width: 100vw;
+            font-family: "Oswald", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui;
+            margin: 0;
+            color: var(--amb);
+            font-size: 60px;
+            text-shadow: 0px 4px 8px rgb(232, 202, 145, 0.2);
+            font-weight: 600;
+            user-select: none;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            display: flex;
+            border: 0;
+            outline: none;
+        }
+        dialog:not([open]) {
+            display: none!important;
+        }
+        #win_question {
+            text-align: center;
+        }
+        #win #window_answer {
+            display: none;
+        }
+        #fsbtn {
+            bottom: 1px;
+            opacity: 0.5;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            position: absolute;
+            z-index: 4000;
+            border-radius: 50%;
+            left: 1px;
+        }
+    </style>
+
+    <script>
+        function enterFullscreen(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.webkitRequestFullscreen) { /* Safari */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE/Edge */
+                element.msRequestFullscreen();
+            }
+            setTimeout(function() {
+                resize();
+            }, 100);
+        }
+        fs.show();
+        
+        const solved = [0, 0, 0, 0];
+        function solve(th) {
+            if (!th.hasAttribute('onclick')) return;
+            th.style.animation = "blink 5s";
+            setTimeout(function() {
+                page_select.style.display = "none";
+                win_answer.style.display = "none";
+                th.innerText = ""; // permanently
+                th.setAttribute('onclick', "");
+                th.style.animation = "none";
+                win_question.style.display = "block";
+
+                win_question.innerText = th.getAttribute("question");
+                win_answer.innerText = th.getAttribute("answer");
+                win.show();
+                win.onclick = function() {
+                    win_question.style.display = "none";
+                    win_answer.style.display = "block";
+
+                    win.onclick = function() {
+                        win_question.style.display = "none";
+                        win_answer.style.display = "none";
+                        
+                        page_select.style.display = "block";
+                        win.onclick = null;
+
+                        const did = Number(th.getAttribute('did'));
+                        solved[did] = solved[did]+1;
+                    }
+                }
+            }, 1200);
+            
+        }
+
+        function $(e) { return document.querySelector(e) }
+
+        setInterval(function() {
+            if (solved[0] == 4) {
+                $('.n1').innerText = "";
+                $('.n1').classList.add('solved');
+            }
+            if (solved[1] == 4) {
+                $('.n2').innerText = "";
+                $('.n2').classList.add('solved');
+            }
+            if (solved[2] == 4) {
+                $('.n3').innerText = "";
+                $('.n3').classList.add('solved');
+            }
+            if (solved[3] == 4) {
+                $('.n4').innerText = "";
+                $('.n4').classList.add('solved');
+            }
+        }, 500);
+
+        function resize() {
+            const grid = document.querySelector('.table-grid');
+            grid.style['min-width'] = grid.clientHeight + 'px';
+        } resize();
+    </script>
+
+</html>
+
+
+
+
+
